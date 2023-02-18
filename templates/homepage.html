@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css')}}">
+    <title>Boggle</title>
+</head>
+<body>
+    <h1>Boggle</h1>
+    <h2>How many words can you find?</h2>
+    <p>Score = <b class="score">0</b></p>
+    <p>Seconds remaining in game: <b class="timer">0</b></p>
+
+
+   <table class="board">
+       <tbody>
+           {% for row in board %}
+           <tr>
+               {% for td in row %}
+               <td>{{ td }}</td>
+               {% endfor %}
+           </tr>
+           {% endfor %}
+       </tbody>
+   </table>
+
+   <p>High Score: {{ highscore }} from {{ timesplayed }} games</p>
+
+
+
+   <form method="POST" class="guess">
+       <h3>Enter Word</h3>
+       <input name="word" class="word">
+       <button>Submit</button>
+   </form>
+
+   <h3 class="message"></h3>
+
+   <p>Found Words: <b class="add-words"></b></p>
+
+   <button class="new-game">New Game</button>
+
+   <script src="http://unpkg.com/jquery"></script>
+   <script src="https://unpkg.com/axios/dist/axios.js"></script>
+   <script src="/static/app.js"></script>
+
+    
+</body>
+</html>
